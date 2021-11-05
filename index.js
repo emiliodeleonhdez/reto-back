@@ -10,7 +10,7 @@ app.get("/", (request, response) => {
   response.send("Hello World!");
 });
 
-/* apiRouter(app); */
+apiRouter(app);
 
 
 app.listen(port, () => {
