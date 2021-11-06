@@ -22,12 +22,21 @@ const authenticate = async (userName, password) => {
     return await encrypt.verifyPassword(password, hash);
   };
 
-  const getByUsername = async (userName) => {
+
+
+const getByUsername = async (userName) => {
     return await User.findOne({ userName }).exec();
   };
 
+
+const getById = async (userId) => {
+    return await User.findById({ userId }).exec();
+  };
 module.exports = {
     create,
+    getByUsername, 
+    getById,
     authenticate,
-    getByUsername,
+
 }
+
