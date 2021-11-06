@@ -16,6 +16,20 @@ const create = async (userInfo) =>{
     return {id:savedUser.id, userName:savedUser.userName}
 }
 
+
+
+const getByUsername = async (userName) => {
+    return await User.findOne({ userName }).exec();
+  };
+
+
+const getById = async (userId) => {
+    return await User.findById({ userId }).exec();
+  };
 module.exports = {
     create,
+    getByUsername, 
+    getById,
+
 }
+
