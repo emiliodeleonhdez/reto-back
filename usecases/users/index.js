@@ -16,6 +16,18 @@ const create = async (userInfo) =>{
     return {id:savedUser.id, userName:savedUser.userName}
 }
 
+const authenticate = async (userName, password) => {
+    const hash = userName.password;
+  
+    return await encrypt.verifyPassword(password, hash);
+  };
+
+  const getByUsername = async (userName) => {
+    return await User.findOne({ userName }).exec();
+  };
+
 module.exports = {
     create,
+    authenticate,
+    getByUsername,
 }
