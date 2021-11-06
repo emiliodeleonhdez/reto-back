@@ -32,11 +32,16 @@ const getByUsername = async (userName) => {
 const getById = async (userId) => {
     return await User.findById({ userId }).exec();
   };
+
+const updateUser = async (userId, update) =>{
+    return await User.findOneAndUpdate(userId, update,{new:true})
+}
+
 module.exports = {
     create,
     getByUsername, 
     getById,
     authenticate,
-
+    updateUser,
 }
 

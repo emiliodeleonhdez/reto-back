@@ -53,4 +53,22 @@ router.get("/", async (req, res, next) => {
         }
   });
 
+  router.put("/:userId", async (req, res, next)=>{
+      try{
+        const {userId}=req.params
+        const {userName, password, age} = req.body
+        /* const {update}=req.body */
+        const userToUpdate = await user.updateUser(userId, req.body)
+        console.log({userId})
+        console.log(userToUpdate)
+        res.status(202).json({
+            ok:true,
+            message:"User updated",
+            payload:userToUpdate,
+        })
+      }catch(err){
+          next(err)
+      }
+  })
+
 module.exports = router 
