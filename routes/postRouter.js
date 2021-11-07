@@ -16,4 +16,24 @@ router.post("/", async (req,res,next)=>{
     }
 })
 
+router.get("/:userId", async (req, res, next) => { 
+    const {userId}=req.params
+
+    try {
+
+    const postById = await post.getById(userId)    
+    res.status(200).json({ 
+
+        ok:true,
+        payload:postById,
+
+    }); 
+
+    }
+
+    catch(err){
+        next()
+        }
+  });
+
 module.exports = router 

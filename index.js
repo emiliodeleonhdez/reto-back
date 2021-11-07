@@ -12,9 +12,10 @@ app.get("/", (request, response) => {
   response.send("Hello World!");
 });
 
-apiRouter(app);
 app.use(logErrors);
 app.use(errorHandler);
+apiRouter(app);
+
 
 
 

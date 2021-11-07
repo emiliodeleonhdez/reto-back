@@ -8,6 +8,12 @@ const create = async (postData) =>{
     return savedPost
 }
 
+const getById = async (userId) => {
+    return await Post.findById(userId).exec();
+  };
+
+
 module.exports = {
     create,
+    getById,
 }
