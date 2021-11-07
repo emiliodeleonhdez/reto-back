@@ -12,8 +12,21 @@ const getById = async (userId) => {
     return await Post.findById(userId).exec();
   };
 
+  const updatePost = async (id, update) =>{
+    const {_id} = id
+    const {
+        postTitle,
+        postBody,
+        userId,
+        coverImage,
+        tags,
+    }=  update;  
+    return await Post.findByIdAndUpdate(id,update,{new:true}).exec()
+
+}
 
 module.exports = {
     create,
     getById,
+    updatePost,
 }

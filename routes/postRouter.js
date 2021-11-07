@@ -36,4 +36,21 @@ router.get("/:userId", async (req, res, next) => {
         }
   });
 
+  router.patch("/:id", async (req, res, next)=>{
+    try{
+      const {id}=req.params
+      const update = req.body
+      console.log(id)
+      /* const {update}=req.body */
+      const postToUpdate = await post.updatePost(id, update)
+      console.log(postToUpdate)
+      res.status(202).json({
+          ok:true,
+          message:"Post updated",
+          payload:postToUpdate,
+      })
+    }catch(err){
+        next(err)
+    }
+})
 module.exports = router 
