@@ -53,13 +53,13 @@ router.get("/", async (req, res, next) => {
         }
   });
 
-  router.put("/:userId", async (req, res, next)=>{
+  router.patch("/:userId", async (req, res, next)=>{
       try{
         const {userId}=req.params
-        const {userName, password, age} = req.body
+        const update = req.body
+        console.log(userId)
         /* const {update}=req.body */
-        const userToUpdate = await user.updateUser(userId, req.body)
-        console.log({userId})
+        const userToUpdate = await user.updateUser(userId, update)
         console.log(userToUpdate)
         res.status(202).json({
             ok:true,

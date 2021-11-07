@@ -34,7 +34,9 @@ const getById = async (userId) => {
   };
 
 const updateUser = async (userId, update) =>{
-    return await User.findOneAndUpdate(userId, update,{new:true})
+    const{userName,age } =  update;  
+    return await User.findByIdAndUpdate(userId,{userName,age},{new:true}).exec()
+
 }
 
 module.exports = {
