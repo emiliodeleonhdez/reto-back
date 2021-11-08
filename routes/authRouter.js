@@ -4,7 +4,7 @@ const users = require("../usecases/users");
 
 const router = express.Router();
 
-router.post("/", async (req, res, next) => {
+router.post("/login", async (req, res, next) => {
   const { userName, password } = req.body;
 
   const user = await users.getByUsername(userName);
