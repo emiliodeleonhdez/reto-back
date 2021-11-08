@@ -4,10 +4,10 @@ const port = 8000;
 const apiRouter = require("./routes");
 const db = require("./lib/db") // importa la conexión de la base de datos en .lib/db.js
 const { logErrors, errorHandler } = require("./middlewares/errorHandlers");
-
+const auth = require("./middlewares/auth")
 
 app.use(express.json());
-
+auth(app)
 app.get("/", (request, response) => {
   response.send("Hello World!");
 });
