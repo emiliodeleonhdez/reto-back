@@ -26,10 +26,20 @@ const getByUsername = async (userName) => {
 const getById = async (userId) => {
     return await User.findById({ userId }).exec();
   };
-module.exports = {
-    create,
-    getByUsername, 
-    getById,
 
-}
+
+  const authenticate = async (user, password) => {
+    const hash = user.password;
+  
+    return await encrypt.verifyPassword(password, hash);
+  };
+  
+  
+  module.exports = {
+    create,
+    getByUsername,
+    getById,
+    authenticate,    
+  };
+
 
