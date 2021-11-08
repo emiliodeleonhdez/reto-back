@@ -1,5 +1,5 @@
 const jwt = require("../../lib/jwt")
-const Posts = require("../../model/posts").model
+const Posts = require("../../models/posts").model
 
 const auth = {
     isLogged: async (req, res, next) => {
