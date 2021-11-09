@@ -1,5 +1,5 @@
 const jwt = require("../../lib/jwt")
-const Posts = require("../../models/posts").model
+const Post = require("../../models/posts").model
 
 const auth = {
     isLogged: async (req, res, next) => {
@@ -32,7 +32,7 @@ const auth = {
             const { token } = req.headers
             const { id } = req.params
             const tokenPayload = await jwt.verify(token)
-            const posts = await Posts.getById(id)
+            const posts = await Post.findById(id)
             if (posts.userId != tokenPayload.sub) throw new Error("No permissions")
             next()
         } catch (err) {

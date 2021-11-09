@@ -19,8 +19,11 @@ router.post("/", async (req,res,next)=>{
 router.get("/", async (req, res, next) => {
 
   try {
+    console.log(req.query)
     const {postTitle,postBody,userId,tags} = req.query 
-    const  queryParams = [{postTitle}, {postBody},{userId},{tags}]
+    console.log(queryParams)
+    const  queryParams = [{postTitle},{userId}]
+    console.log(queryParams)
     const payload = await post.getByQueryParam(queryParams);
 
    
@@ -74,6 +77,7 @@ router.get("/:id", async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
     const { id } = req.params;
+    console.log(id)
     try {
       const deletedPost = await post.deletePost(id);
       res.json({

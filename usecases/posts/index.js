@@ -32,8 +32,10 @@ const deletePost = (id) => {
 const getByQueryParam = (queryParam) => {
     if (typeof queryParam == "array"){
         return Post.find({$or: queryParam}).exec(); 
+    }else{
+        return Post.find({}).exec(); 
     }
-    return Post.find({}).exec(); 
+    
 }
 
 module.exports = {
