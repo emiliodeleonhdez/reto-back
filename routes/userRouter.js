@@ -33,12 +33,12 @@ router.get("/", async (req, res, next) => {
         }
   });
 
-  router.get("/:userId", async (req, res, next) => { 
-    const {userId}=req.params
+  router.get("/:id", async (req, res, next) => { 
+    const {id}=req.params
 
     try {
 
-    const user= await user.getById(userId)    
+    const user= await user.getById(id)    
     res.status(200).json({ 
 
         ok:true,
@@ -53,13 +53,13 @@ router.get("/", async (req, res, next) => {
         }
   });
 
-  router.patch("/:userId", async (req, res, next)=>{
+  router.patch("/:id", async (req, res, next)=>{
       try{
-        const {userId}=req.params
+        const {id}=req.params
         const update = req.body
-        console.log(userId)
+        console.log(id)
         /* const {update}=req.body */
-        const userToUpdate = await user.updateUser(userId, update)
+        const userToUpdate = await user.updateUser(id, update)
         console.log(userToUpdate)
         res.status(202).json({
             ok:true,

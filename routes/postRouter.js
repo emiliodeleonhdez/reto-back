@@ -21,7 +21,7 @@ router.get("/", async (req, res, next) => {
   try {
     const {postTitle,postBody,userId,tags} = req.query 
     const  queryParams = [{postTitle}, {postBody},{userId},{tags}]
-    const payload = await posts.getByQueryParam(queryParams);
+    const payload = await post.getByQueryParam(queryParams);
 
    
     res.json({
