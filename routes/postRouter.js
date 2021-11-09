@@ -16,12 +16,30 @@ router.post("/", async (req,res,next)=>{
     }
 })
 
-router.get("/:userId", async (req, res, next) => { 
-    const {userId}=req.params
+router.get("/", async (req, res, next) => {
+
+  try {
+    const {postTitle,postBody,userId,tags} = req.query 
+    const  queryParams = [{postTitle}, {postBody},{userId},{tags}]
+    const payload = await posts.getByQueryParam(queryParams);
+
+   
+    res.json({
+      ok: true,
+      message: "Done!",
+      payload,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/:id", async (req, res, next) => { 
+    const {id}=req.params
 
     try {
 
-    const postById = await post.getById(userId)    
+    const postById = await post.getById(id)    
     res.status(200).json({ 
 
         ok:true,
@@ -67,4 +85,7 @@ router.delete("/:id", async (req, res, next) => {
       next(err);
     }
   });
+
+
+
 module.exports = router 

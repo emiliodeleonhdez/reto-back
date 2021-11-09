@@ -29,10 +29,18 @@ const deletePost = (id) => {
     return Post.findByIdAndDelete(id).exec();
   };
 
+const getByQueryParam = (queryParam) => {
+    if (typeof queryParam == "array"){
+        return Post.find({$or: queryParam}).exec(); 
+    }
+    return Post.find({}).exec(); 
+}
+
 module.exports = {
     create,
     getById,
     updatePost,
     deletePost,
+    getByQueryParam,
 }
 // Ignore
