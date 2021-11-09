@@ -16,6 +16,11 @@ const schema = new Schema({
         required: true,
         minlength: 1,
     },
+    age:{
+        type: Number,
+        required: false,
+        minlength:1,
+    }
 
 })
 

@@ -16,6 +16,12 @@ const create = async (userInfo) =>{
     return {id:savedUser.id, userName:savedUser.userName}
 }
 
+const authenticate = async (userName, password) => {
+    const hash = userName.password;
+  
+    return await encrypt.verifyPassword(password, hash);
+  };
+
 
 
 const getByUsername = async (userName) => {
@@ -26,10 +32,18 @@ const getByUsername = async (userName) => {
 const getById = async (userId) => {
     return await User.findById({ userId }).exec();
   };
+
+const updateUser = async (userId, update) =>{
+    const{userName,age } =  update;  
+    return await User.findByIdAndUpdate(userId,{userName,age},{new:true}).exec()
+
+}
+
 module.exports = {
     create,
     getByUsername, 
     getById,
-
+    authenticate,
+    updateUser,
 }
 
